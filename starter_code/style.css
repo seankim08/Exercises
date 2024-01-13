@@ -1,0 +1,64 @@
+* {
+  /* box-sizing: border-box; */
+}
+
+:focus {
+ /* TODO */
+}
+
+body {
+  /* TODO */
+
+  background-image: linear-gradient(to right, rgb(254, 201, 40), rgb(252, 88, 46));
+  height: auto;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+input {
+ /* TODO */
+}
+
+.search-container {
+ /* TODO */
+ position: absolute;
+ top: 40%;
+ left: 40%;
+}
+.search-container input,
+.search-container .suggestions {
+  /* TODO */
+  background-color: rgb(244, 193, 99);
+}
+.search-container input {
+ /* TODO */
+}
+.search-container .suggestions {
+   /* TODO */
+   height: auto;
+}
+
+ul {
+  /* TODO */
+  list-style-type: none;
+  padding: 0;
+  width:100%;
+  box-sizing:border-box;
+}
+ul.has-suggestions {
+  /* TODO */
+}
+ul li {
+  /* TODO */
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+ul li:hover {
+  /* TODO */
+  background-color: rgb(255, 77, 0);
+}
+
+input {
+   /* TODO */
+}
