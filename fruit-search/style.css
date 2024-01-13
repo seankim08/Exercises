@@ -17,6 +17,7 @@ body {
 
 input {
  /* TODO */
+ outline: 0;
 }
 
 .search-container {
@@ -32,17 +33,20 @@ input {
 }
 .search-container input {
  /* TODO */
+ font-family: cursive;
+ font-size: 20px;
 }
 .search-container .suggestions {
    /* TODO */
-   height: auto;
+   position: relative;
+   bottom: 15px;
 }
 
 ul {
   /* TODO */
+  position: relative;
   list-style-type: none;
   padding: 0;
-  width:100%;
   box-sizing:border-box;
 }
 ul.has-suggestions {
@@ -50,9 +54,10 @@ ul.has-suggestions {
 }
 ul li {
   /* TODO */
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 8px;
+  width:100%;
+  font-family: cursive;
+  font-size: 20px;
+
 }
 ul li:hover {
   /* TODO */
