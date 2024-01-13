@@ -8,7 +8,6 @@
 
 body {
   /* TODO */
-
   background-image: linear-gradient(to right, rgb(254, 201, 40), rgb(252, 88, 46));
   height: auto;
   background-attachment: fixed;
@@ -54,7 +53,6 @@ ul.has-suggestions {
 }
 ul li {
   /* TODO */
-  width:100%;
   font-family: cursive;
   font-size: 20px;
 
