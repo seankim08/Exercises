@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle Game</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Make Your Guess</h1>
+        <p>Your current score is <span id="score">0</span></p>
+        <p>Seconds left is : <span id="timer">60</span></p>
+        <table>
+            {% for row in session['board'] %}
+            <tr>
+                {% for char in row %}
+                <td>
+                    {{char}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="#" id="guess-form" method="get">
+            <input type="text" placeholder="Make your Guess" id="guess-word">
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="static/app.js"></script>
+</body>
+
+</html>

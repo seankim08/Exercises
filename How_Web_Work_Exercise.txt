@@ -1,0 +1,48 @@
+- What is HTTP?
+HyperText Transfer Protocol. It is a set of rules how to communicate between browser and web server.
+Default port is 80
+
+- What is a URL?
+It is a shorthand for Uniform Resource Locator. It is used by browsers to retrieve the resource on the web.
+
+- What is DNS?
+It is a shorthand for Domain Name Service. DNS converts domain names into ip address or vice verse.
+
+- What is a query string?
+
+
+- What are two HTTP verbs and how are they different?
+Get and Post
+Get request does not have side effects (do not change server data) and it asks data from server. 
+Also, arguments are passed along in query string.
+Ex. Entering url in brower, clicking links, and some form submissions.
+
+Post request has side effects (change data on server) and it sends data to server. 
+Arguments are sent as body of the request not in query string.
+Ex. Some form submissions.
+
+- What is an HTTP request?
+HTTP request is a request sent by the user from the web browser to server. 
+It contains method, http protocol version, resource URL, and headers.
+
+- What is an HTTP response?
+HTTP response is a response sent by the server due to the http request.
+It contains http protocol version, response status code, headers, and response body(usually html).
+
+- What is an HTTP header? Give a couple examples of request and response headers you have seen.
+HTTP header contains additional information about the request or response.
+
+Request Header contains:
+Request URL, Request mothod, Status code , etc.
+
+Respond Header contains:
+Content-Type, Set-cookie, Date, etc.
+
+- What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+http - Protocol
+somesite.com  Hostname
+/some/page.html - resource
+
+1. Turn hostname(somesite.com) into ip address.
+2. Connect to the ip addres on port 80 because it is default port on http.
+3. Use the http protocol to ask for /some/page.html

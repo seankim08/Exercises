@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}User Profile Page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{username}}'s Profile <a href="/users/{{username}}/delete"><button
+                class="btn btn-danger btn-sm">Delete</button></a></h1>
+
+    <div>
+        <p>Username : {{username}}</p>
+        <p>Email : {{email}}</p>
+        <p>First Name : {{first_name}}</p>
+        <p>Last Name : {{last_name}}</p>
+    </div>
+
+    <div>
+        <h3>List of Feedbacks</h3>
+        {% if feedbacks %}
+        <ul>
+            {% for feedback in feedbacks %}
+            <li>{{feedback.title}}</li>
+            <span>{{feedback.content}}</span>
+            <a href="/feedback/{{feedback.id}}/update"><button class="btn btn-success btn-sm">Edit</button></a>
+            <form action="/feedback/{{feedback.id}}/delete" method="POST"><button
+                    class="btn btn-danger btn-sm">Delete</button>
+            </form>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <a href="/users/{{username}}/feedback/add">Add Feedback</a>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}User Detail Page{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <img src="{{user.img_url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+        <a href="/users/{{user.id}}/edit">
+            <button type="button" class="btn btn-primary">Edit</button>
+        </a><a href="/users/{{user.id}}/delete">
+            <button type="button" class="btn btn-danger">Delete</button>
+        </a>
+        <h3>Post</h3>
+        <p class="card-text">
+            {% if posts %}
+        <ul>
+            {% for post in posts %}
+            <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif%}
+        </p>
+        <a href="/users/{{user.id}}/posts/new">
+            <button type="button" class="btn btn-success">Add Post</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

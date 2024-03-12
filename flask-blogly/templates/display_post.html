@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Post Detail Page{% endblock %}
+
+{% block content %}
+<div class="contanier">
+    <h1>{{post.title}}</h1>
+
+    <p>
+        {{post.content}}
+    </p>
+    <p>By {{user.first_name}} {{user.last_name}} {{post.created_at}}</p>
+
+    <p>Tags: {% if tags %}
+        {% for tag in tags %}
+        <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+        {% endfor %}
+        {% endif%}
+    </p>
+
+    <a href="/users/{{user.id}}">
+        <button class="btn btn-outline-primary">Cancel</button>
+    </a>
+    <a href="/posts/{{post.id}}/edit"><button class="btn btn btn-success">Edit</button></a>
+    <a href="/posts/{{post.id}}/delete"><button class="btn btn-danger">Delete</button></a>
+</div>
+
+{% endblock %}
