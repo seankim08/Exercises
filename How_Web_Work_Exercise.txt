@@ -9,7 +9,7 @@ It is a shorthand for Uniform Resource Locator. It is used by browsers to retrie
 It is a shorthand for Domain Name Service. DNS converts domain names into ip address or vice verse.
 
 - What is a query string?
-
+It is a set of characters at the end of the url. These characters are fields and its values.
 
 - What are two HTTP verbs and how are they different?
 Get and Post
