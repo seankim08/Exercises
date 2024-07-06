@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck of Cards</title>
+    <style>
+        #card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .card img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deck of Cards</h1>
+    <button id="draw-card" onclick="drawCard()" disabled>Draw a Card</button>
+    <div id="card-container"></div>
+
+    <script src="app.js"></script>
+    <script>
+        // Create a new deck when the page loads
+        window.onload = createNewDeck;
+    </script>
+</body>
+</html>
