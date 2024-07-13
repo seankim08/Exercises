@@ -1,0 +1,21 @@
+.tweet {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+.tweet-username {
+    color: #1DA1F2;
+    font-weight: bold;
+}
+.tweet-name {
+    color: #657786;
+}
+.tweet-date {
+    color: #657786;
+    font-size: 0.9em;
+}
+.tweet-message {
+    margin-top: 10px;
+}
