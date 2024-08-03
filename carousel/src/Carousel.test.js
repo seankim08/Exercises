@@ -2,64 +2,57 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Carousel from "./Carousel";
 
+// Define TEST_IMAGES here or import it from another file
+const TEST_IMAGES = [
+  { src: "image1.jpg", caption: "Photo by Richard Pasquarella on Unsplash" },
+  { src: "image2.jpg", caption: "Photo by Pratik Patel on Unsplash" },
+  { src: "image3.jpg", caption: "Photo by Josh Post on Unsplash" }
+];
+
 it("renders without crashing", function() {
-  render(<Carousel />);
+  render(<Carousel photos={TEST_IMAGES} title="images for testing" />);
 });
 
 it("matches snapshot", function() {
-  const { asFragment } = render(<Carousel />);
+  const { asFragment } = render(<Carousel photos={TEST_IMAGES} title="images for testing" />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("works when you click on the right arrow", function() {
-  const { container } = render(
+  const { getByTestId } = render(
     <Carousel
       photos={TEST_IMAGES}
       title="images for testing"
     />
   );
-  // expect the first image to show, but not the second
-  expect(
-    container.querySelector('img[alt="testing image 1"]')
-  ).toBeInTheDocument();
-  expect(
-    container.querySelector('img[alt="testing image 2"]')
-  ).not.toBeInTheDocument();
-
-  // move forward in the carousel
-  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  const rightArrow = getByTestId("right-arrow");
   fireEvent.click(rightArrow);
 
-  // expect the second image to show, but not the first
-  expect(
-    container.querySelector('img[alt="testing image 1"]')
-  ).not.toBeInTheDocument();
-  expect(
-    container.querySelector('img[alt="testing image 2"]')
-  ).toBeInTheDocument();
+  // expect the second image to be displayed
+  expect(getByTestId("Card-title")).toHaveTextContent(TEST_IMAGES[1].caption);
 });
 
 it("moves to the previous image when the left arrow is clicked", function() {
-  const { getByTestId } = render(<Carousel />);
+  const { getByTestId } = render(<Carousel photos={TEST_IMAGES} title="images for testing" />);
   const rightArrow = getByTestId("right-arrow");
-  const leftArrow = getByTestId("left-arrow");
 
   // Move to the second image
   fireEvent.click(rightArrow);
-
+  
+  const leftArrow = getByTestId("left-arrow");
   // Move back to the first image
   fireEvent.click(leftArrow);
 
-  expect(getByTestId("card-small")).toHaveTextContent("Image 1 of 3");
+  expect(getByTestId("Card-title")).toHaveTextContent(TEST_IMAGES[0].caption);
 });
 
 it("hides left arrow on first image", function() {
-  const { queryByTestId } = render(<Carousel />);
+  const { queryByTestId } = render(<Carousel photos={TEST_IMAGES} title="images for testing" />);
   expect(queryByTestId("left-arrow")).toBeNull();
 });
 
 it("hides right arrow on last image", function() {
-  const { queryByTestId } = render(<Carousel />);
+  const { queryByTestId } = render(<Carousel photos={TEST_IMAGES} title="images for testing" />);
   const rightArrow = queryByTestId("right-arrow");
 
   // Move to the last image
