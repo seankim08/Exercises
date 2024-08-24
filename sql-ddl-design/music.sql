@@ -7,33 +7,39 @@ CREATE DATABASE music;
 
 \c music
 
-CREATE TABLE artists
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL
+CREATE TABLE artists (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
 );
 
-CREATE TABLE producers
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL
+CREATE TABLE albums (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    release_date DATE NOT NULL
 );
 
-CREATE TABLE albums
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL
+CREATE TABLE producers (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
 );
 
-CREATE TABLE songs
-(
-  id SERIAL PRIMARY KEY,
-  title TEXT NOT NULL,
-  duration_in_seconds INTEGER NOT NULL,
-  release_date DATE NOT NULL,
-  artist_id INT[] REFERENCES artists NOT NULL,
-  album_id INT REFERENCES albums NOT NULL,
-  producers_id INT[] REFERENCES producers NOT NULL
+CREATE TABLE songs (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    duration_in_seconds INTEGER NOT NULL,
+    album_id INTEGER REFERENCES albums(id)
+);
+
+CREATE TABLE song_artists (
+    song_id INTEGER REFERENCES songs(id),
+    artist_id INTEGER REFERENCES artists(id),
+    PRIMARY KEY (song_id, artist_id)
+);
+
+CREATE TABLE song_producers (
+    song_id INTEGER REFERENCES songs(id),
+    producer_id INTEGER REFERENCES producers(id),
+    PRIMARY KEY (song_id, producer_id)
 );
 
 INSERT INTO songs

@@ -7,43 +7,42 @@ CREATE DATABASE air_traffic;
 
 \c air_traffic
 
-CREATE TABLE tickets
-(
-  id SERIAL PRIMARY KEY,
-  passenger_id INT REFERENCES passengers NOT NULL,
-  seat TEXT NOT NULL,
-  departure TIMESTAMP NOT NULL,
-  arrival TIMESTAMP NOT NULL,
-  airline_id INT REFERENCES airlines NOT NULL,
-  from_city TEXT NOT NULL,
-  from_country TEXT NOT NULL,
-  to_city TEXT NOT NULL,
-  to_country TEXT NOT NULL
+CREATE TABLE countries (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
 );
 
-CREATE TABLE airlines
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
+CREATE TABLE cities (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    country_id INTEGER REFERENCES countries(id)
 );
 
-CREATE TABLE passengers
-(
-  id SERIAL PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
+CREATE TABLE airlines (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
 );
 
-CREATE TABLE cities
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
+CREATE TABLE flights (
+    id SERIAL PRIMARY KEY,
+    airline_id INTEGER REFERENCES airlines(id),
+    from_city_id INTEGER REFERENCES cities(id),
+    to_city_id INTEGER REFERENCES cities(id),
+    departure TIMESTAMP NOT NULL,
+    arrival TIMESTAMP NOT NULL
 );
 
-CREATE TABLE countries
-(
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
+CREATE TABLE passengers (
+    id SERIAL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL
+);
+
+CREATE TABLE tickets (
+    id SERIAL PRIMARY KEY,
+    passenger_id INTEGER REFERENCES passengers(id),
+    flight_id INTEGER REFERENCES flights(id),
+    seat TEXT NOT NULL
 );
 
 INSERT INTO tickets
